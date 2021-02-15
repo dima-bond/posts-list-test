@@ -45,7 +45,8 @@ export default {
         this.error = true;
       }
     } catch (error) {
-      console.log(`meh ${error}`);
+      this.loading = false;
+      this.error = true;
     }
   },
   filters: {
