@@ -1,6 +1,8 @@
 <template>
   <div>
-    <PostsList 
+    <h2 v-if="error">Please, try again later.</h2>
+    <PostsList
+      v-else
       v-bind:posts="posts"
     />
   </div>
@@ -13,11 +15,18 @@ export default {
   data() {
     return {
       posts: [],
+      error: false,
     }
   },
   mounted() {
     fetch('https://jsonplaceholder.typicode.com/posts?_limit=30')
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          this.error = true;
+          return;
+        }
+        return response.json();
+      })
       .then(json => this.posts = json)
   },
   components: {

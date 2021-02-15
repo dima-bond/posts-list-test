@@ -20,7 +20,8 @@ export default {
 
 <style scoped>
   ul {
-    margin: 0;
+    max-width: 1400px;
+    margin: 0 auto;
     padding: 0;
     display: flex;
     justify-content: space-evenly;

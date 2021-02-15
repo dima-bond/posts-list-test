@@ -1,7 +1,7 @@
 <template>
   <li class="post__card">
     <router-link class="post__link" :to="{ name: 'PostDetails', params: { id: post.id }}">
-      <h3>{{post.title}}</h3>
+      <h3>{{post.title | uppercase}}</h3>
       <p class="post__body">{{post.body}}</p>
     </router-link>
   </li>
@@ -15,6 +15,12 @@ export default {
       required: true,
     }
   },
+
+  filters: {
+    uppercase(value) {
+      return value.toUpperCase();
+    }
+  }
 }
 </script>
 
